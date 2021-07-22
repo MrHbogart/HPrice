@@ -88,14 +88,15 @@ class HPrice:
 
     #TODo find best way te clear dots that is not very effective in data
     def clear_HPrice(self):
+        """what did i do?
+            i just iterate prices from HPrice function and to find out whether the point i is extremum or not,
+             i check if (i - (i-1) * ((i+1) -i)
+             if it was negative, then it was an extremum."""
         data = self.HPrice()
         result = [data.iloc[0]]
         for i in range(1, data.shape[0]-1):
-            # if (data['date'][i] - data['date'][i-1]).total_seconds() != 0 and (data['date'][i+1] - data['date'][i]).total_seconds() !=0 :
-                if (data['price'][i] - data['price'][i-1]) * (data['price'][i+1] - data['price'][i]) < 0:
-                    result.append(data.iloc[i])
-            # else:
-            #     result.append(data.iloc[i])
+            if (data['price'][i] - data['price'][i-1]) * (data['price'][i+1] - data['price'][i]) < 0:
+                result.append(data.iloc[i])
         result.append(data.iloc[-1])
 
         return pd.DataFrame(result, columns = ['date' , 'price', 'volume']).reset_index().drop(['index'], axis=1)
