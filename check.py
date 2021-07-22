@@ -22,6 +22,9 @@ print(data.head())
 
 cd = HPrice.HPrice(data, 4).HPrice()
 
+hp = HPrice.HPrice(data, 10).clear_HPrice()
+
+
 # print(cd)
 
 #here we want to plot data to check if it works correctly
@@ -36,7 +39,12 @@ fig = go.Figure(data=go.Ohlc(x=data['date'],
                     close=data['close']))
 
 #adding neowave cash data to OHLC chart to compare
+# fig.add_trace(go.Scatter(
+#     mode="markers+lines", x=cd["date"], y=cd["price"]
+# ))
+
 fig.add_trace(go.Scatter(
-    mode="markers+lines", x=cd["date"], y=cd["price"]
+    mode="markers+lines", x=hp["date"], y=hp["price"]
 ))
+
 fig.show()

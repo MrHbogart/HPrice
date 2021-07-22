@@ -85,3 +85,17 @@ class HPrice:
 
         result = pd.DataFrame(list(zip(H_date, H_price, H_volume)), columns=['date', 'price', 'volume'])
         return result
+
+    #TODo find best way te clear dots that is not very effective in data
+    def clear_HPrice(self):
+        data = self.HPrice()
+        result = [data.iloc[0]]
+        for i in range(1, data.shape[0]-1):
+            # if (data['date'][i] - data['date'][i-1]).total_seconds() != 0 and (data['date'][i+1] - data['date'][i]).total_seconds() !=0 :
+                if (data['price'][i] - data['price'][i-1]) * (data['price'][i+1] - data['price'][i]) < 0:
+                    result.append(data.iloc[i])
+            # else:
+            #     result.append(data.iloc[i])
+        result.append(data.iloc[-1])
+
+        return pd.DataFrame(result, columns = ['date' , 'price', 'volume']).reset_index().drop(['index'], axis=1)
