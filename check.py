@@ -13,6 +13,8 @@ for i in data['Gmt time']:
 data['date'] = date
 
 data.drop(['Gmt time'], axis=1, inplace = True)
+
+#change names of data columns
 data.columns = ['open', 'high', 'low', 'close', 'volume', 'date']
 
 print(data.head())
