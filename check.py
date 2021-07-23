@@ -32,19 +32,19 @@ hp = HPrice.HPrice(data, 10).clear_HPrice()
 import plotly.graph_objects as go
 
 #plotting OHLC data
-fig = go.Figure(data=go.Ohlc(x=data['date'],
-                    open=data['open'],
-                    high=data['high'],
-                    low=data['low'],
-                    close=data['close']))
+# fig = go.Figure(data=go.Ohlc(x=data['date'],
+#                     open=data['open'],
+#                     high=data['high'],
+#                     low=data['low'],
+#                     close=data['close']))
 
 #adding neowave cash data to OHLC chart to compare
 # fig.add_trace(go.Scatter(
 #     mode="markers+lines", x=cd["date"], y=cd["price"]
 # ))
 
-fig.add_trace(go.Scatter(
-    mode="markers+lines", x=hp["date"], y=hp["price"]
-))
+# fig.add_trace(go.Scatter(
+#     mode="markers+lines", x=hp["date"], y=hp["price"]
+# ))
 
-fig.show()
+# fig.show()
